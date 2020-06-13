@@ -44,7 +44,7 @@ func main() {
 	if endpoint == "" {
 		panic("endpoint should set through ENDPOINT env")
 	}
-	http.HandleFunc("*", redirect)
+	http.HandleFunc("/", redirect)
 	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
