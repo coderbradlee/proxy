@@ -5,4 +5,5 @@ ENV ENDPOINT=did.iotex.one
 WORKDIR apps/proxy
 COPY . .
 RUN go build -o /usr/local/bin/proxy .
+RUN rm -fr $GOPATH $GOROOT ./*
 CMD [ "proxy"]
