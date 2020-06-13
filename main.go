@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -27,7 +26,6 @@ func get(uri string) ([]byte, int, error) {
 }
 func redirect(w http.ResponseWriter, r *http.Request) {
 	path := "https://" + endpoint + r.RequestURI
-	fmt.Println("redirect", path)
 	ret, statusCode, err := get(path)
 	if err != nil {
 		w.WriteHeader(statusCode)
