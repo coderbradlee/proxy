@@ -20,7 +20,7 @@ func get(uri string) ([]byte, int, error) {
 	defer resp.Body.Close()
 	ret, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return nil, 500, err
+		return nil, http.StatusInternalServerError, err
 	}
 	return ret, resp.StatusCode, nil
 }
@@ -32,6 +32,7 @@ func redirect(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(statusCode)
 		return
 	}
+	w.WriteHeader(statusCode)
 	w.Write(ret)
 }
 
