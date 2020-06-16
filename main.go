@@ -26,7 +26,7 @@ func get(uri string) ([]byte, int, error) {
 }
 
 func redirect(w http.ResponseWriter, r *http.Request) {
-	path := "https://" + endpoint + r.RequestURI
+	path := endpoint + r.RequestURI
 	ret, statusCode, err := get(path)
 	if err != nil {
 		w.WriteHeader(statusCode)
