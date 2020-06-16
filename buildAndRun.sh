@@ -1,4 +1,4 @@
 export PORT=8080
-export ENDPOINT=did.iotex.one
+export ENDPOINT=https://did.iotex.one
 go build .
 ./proxy
