@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -26,14 +27,17 @@ func get(uri string) ([]byte, int, error) {
 }
 
 func redirect(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("request:", r.RequestURI)
 	path := endpoint + r.RequestURI
 	ret, statusCode, err := get(path)
 	if err != nil {
+		fmt.Println("response err:", statusCode, err)
 		w.WriteHeader(statusCode)
 		return
 	}
 	w.WriteHeader(statusCode)
 	w.Write(ret)
+	fmt.Println("response:", statusCode, string(ret))
 }
 
 func main() {
