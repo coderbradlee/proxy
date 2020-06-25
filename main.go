@@ -37,7 +37,7 @@ func redirect(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(statusCode)
 	w.Write(ret)
-	fmt.Println("response:", statusCode, string(ret))
+	fmt.Println("response:", statusCode, string(ret)+"end")
 }
 
 func main() {
